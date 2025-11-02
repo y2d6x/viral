@@ -28,7 +28,7 @@ export const PricingSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto items-start">
           {pricing.tiers.map((tier, idx) => (
             <PricingCard
               key={idx}

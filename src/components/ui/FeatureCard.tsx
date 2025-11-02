@@ -20,14 +20,14 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, benefit, 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-dark-card border border-dark-border rounded-xl p-6 hover:border-gold/50 transition-all duration-300 group"
+      className="bg-dark-card border border-dark-border rounded-xl p-6 hover:border-cosmic-purple/50 hover:bg-dark-card-hover hover:shadow-lg hover:shadow-cosmic-purple/10 transition-all duration-300 group h-full"
     >
       <div className="flex items-start gap-4">
-        <div className="bg-gold/10 p-3 rounded-lg group-hover:bg-gold/20 transition-colors duration-300 shrink-0">
-          <Icon className="w-6 h-6 text-gold" />
+        <div className="bg-gradient-to-br from-cosmic-purple/20 to-cosmic-magenta/20 p-3 rounded-lg group-hover:from-cosmic-purple/30 group-hover:to-cosmic-magenta/30 transition-all duration-300 shrink-0">
+          <Icon className="w-6 h-6 text-cosmic-purple group-hover:text-cosmic-purple-light transition-colors" />
         </div>
-        <div>
-          <h3 className="text-xl font-bold text-foreground mb-2">{title}</h3>
+        <div className="flex-1">
+          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-cosmic-purple-light transition-colors">{title}</h3>
           <p className="text-gray-400 leading-relaxed">{benefit}</p>
         </div>
       </div>

@@ -9,7 +9,7 @@ export const FeaturesSection: React.FC = () => {
   const { features } = landingData;
 
   return (
-    <section id="features" className="py-20 bg-background">
+    <section id="features" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Intelligence Suite */}
         <motion.div
@@ -29,7 +29,7 @@ export const FeaturesSection: React.FC = () => {
               {features.intelligence.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {features.intelligence.items.map((item, idx) => (
               <FeatureCard
                 key={idx}
@@ -60,7 +60,7 @@ export const FeaturesSection: React.FC = () => {
               {features.content.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {features.content.items.map((item, idx) => (
               <FeatureCard
                 key={idx}
@@ -90,7 +90,7 @@ export const FeaturesSection: React.FC = () => {
               {features.business.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {features.business.items.map((item, idx) => (
               <FeatureCard
                 key={idx}

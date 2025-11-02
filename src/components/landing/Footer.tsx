@@ -13,8 +13,8 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-gold mb-4">Viral</h3>
-            <p className="text-gray-400 text-sm">
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-cosmic-purple to-cosmic-magenta bg-clip-text text-transparent mb-4">Viral</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
               The AI-powered platform for content creators and influencers.
             </p>
           </div>
@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
                   <li key={linkIdx}>
                     <a
                       href={link.href}
-                      className="text-gray-400 hover:text-gold transition-colors text-sm"
+                      className="text-gray-400 hover:text-cosmic-purple-light transition-colors text-sm"
                     >
                       {link.label}
                     </a>
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gold transition-colors"
+                  className="text-gray-400 hover:text-cosmic-purple-light transition-colors w-10 h-10 flex items-center justify-center rounded-lg hover:bg-cosmic-purple/10"
                   aria-label={social.platform}
                 >
                   <Icon className="w-5 h-5" />

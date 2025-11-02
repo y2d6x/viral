@@ -1,5 +1,6 @@
 import { Header } from '@/components/landing/Header';
 import { HeroSection } from '@/components/landing/HeroSection';
+import { MobileMockupSection } from '@/components/landing/MobileMockupSection';
 import { CubeSection } from '@/components/landing/CubeSection';
 import { TestimonialSection } from '@/components/landing/TestimonialSection';
 import { FeaturesSection } from '@/components/landing/FeaturesSection';
@@ -16,6 +17,7 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Header />
       <HeroSection />
+      <MobileMockupSection />
       <CubeSection />
       <TestimonialSection />
       <FeaturesSection />
