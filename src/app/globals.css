@@ -1,26 +1,159 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0614;
+  --foreground: #f5f5f5;
+  --cosmic-purple: #8b5cf6;
+  --cosmic-purple-light: #a78bfa;
+  --cosmic-purple-dark: #7c3aed;
+  --cosmic-magenta: #d946ef;
+  --cosmic-cyan: #06b6d4;
+  --cosmic-pink: #ec4899;
+  --dark-navy: #0a0614;
+  --dark-card: #1a1229;
+  --dark-border: #2d1b4e;
+  --gold: #D4AF37;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-cosmic-purple: var(--cosmic-purple);
+  --color-cosmic-purple-light: var(--cosmic-purple-light);
+  --color-cosmic-purple-dark: var(--cosmic-purple-dark);
+  --color-cosmic-magenta: var(--cosmic-magenta);
+  --color-cosmic-cyan: var(--cosmic-cyan);
+  --color-cosmic-pink: var(--cosmic-pink);
+  --color-dark-navy: var(--dark-navy);
+  --color-dark-card: var(--dark-card);
+  --color-dark-border: var(--dark-border);
+  --color-purple-accent: var(--cosmic-purple);
+  --color-gold: var(--gold);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Ensure cube container is transparent */
+img[alt="3D Glowing Cube"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes growBar {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes rotateDial {
+  0% { transform: rotate(-90deg); }
+  50% { transform: rotate(45deg); }
+  100% { transform: rotate(-90deg); }
+}
+
+@keyframes cosmicPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes cosmicGlow {
+  0%, 100% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6),
+                0 0 80px rgba(139, 92, 246, 0.4),
+                0 0 120px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(217, 70, 239, 0.8),
+                0 0 120px rgba(217, 70, 239, 0.6),
+                0 0 180px rgba(217, 70, 239, 0.4);
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--float-x, 100px), var(--float-y, -200px)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes auroraShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes rotate3d {
+  0% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(5deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg) rotateX(5deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-15px) translateX(10px);
+  }
+  50% {
+    transform: translateY(0px) translateX(15px);
+  }
+  75% {
+    transform: translateY(15px) translateX(5px);
+  }
+}
+
+.cosmic-glow {
+  animation: cosmicGlow 3s ease-in-out infinite;
+}
+
+.cosmic-pulse {
+  animation: cosmicPulse 2s ease-in-out infinite;
 }
