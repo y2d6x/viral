@@ -40,23 +40,23 @@ export const PricingCard: React.FC<PricingCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative bg-dark-card rounded-xl p-8 ${
+      className={`relative bg-dark-card rounded-xl p-8 transition-all duration-300 ${
         popular
-          ? 'border-2 border-gold shadow-2xl shadow-gold/20 scale-105'
-          : 'border border-dark-border'
+          ? 'border-2 border-cosmic-purple shadow-2xl shadow-cosmic-purple/30 scale-105 md:scale-110 z-10'
+          : 'border border-dark-border hover:border-cosmic-purple/50 hover:shadow-lg hover:shadow-cosmic-purple/10'
       }`}
     >
       {popular && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gold text-dark-navy px-4 py-1 rounded-full text-sm font-bold">
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-cosmic-purple to-cosmic-magenta text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg shadow-cosmic-purple/50">
           Most Popular
         </div>
       )}
       
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-foreground mb-2">{name}</h3>
+        <h3 className={`text-2xl font-bold mb-2 ${popular ? 'text-cosmic-purple-light' : 'text-foreground'}`}>{name}</h3>
         <p className="text-gray-400 text-sm mb-4">{description}</p>
         <div className="mb-2">
-          <span className="text-5xl font-bold text-foreground">${price}</span>
+          <span className={`text-5xl font-bold ${popular ? 'bg-gradient-to-r from-cosmic-purple to-cosmic-magenta bg-clip-text text-transparent' : 'text-foreground'}`}>${price}</span>
           <span className="text-gray-400">/{period}</span>
         </div>
         <p className="text-sm text-gray-500">{billing}</p>
@@ -76,14 +76,14 @@ export const PricingCard: React.FC<PricingCardProps> = ({
             {feature.included === false ? (
               <X className="w-5 h-5 text-gray-600 shrink-0 mt-0.5" />
             ) : (
-              <Check className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+              <Check className={`w-5 h-5 shrink-0 mt-0.5 ${popular ? 'text-cosmic-purple' : 'text-gold'}`} />
             )}
             <div className="flex-1">
               <span className={feature.included === false ? 'text-gray-600' : 'text-gray-300'}>
                 {feature.name}
               </span>
               {feature.value && (
-                <span className="text-gold font-semibold ml-2">{feature.value}</span>
+                <span className={`font-semibold ml-2 ${popular ? 'text-cosmic-purple-light' : 'text-gold'}`}>{feature.value}</span>
               )}
             </div>
           </div>

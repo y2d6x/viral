@@ -39,13 +39,15 @@ export const FAQSection: React.FC = () => {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-dark-navy/50 transition-colors"
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-dark-navy/50 transition-colors focus:outline-none focus:ring-2 focus:ring-cosmic-purple focus:ring-inset min-h-[60px]"
+                aria-expanded={openIndex === idx}
+                aria-controls={`faq-answer-${idx}`}
               >
                 <h3 className="text-lg font-semibold text-foreground pr-4">
                   {item.question}
                 </h3>
                 <ChevronDown
-                  className={`w-5 h-5 text-gold shrink-0 transition-transform duration-300 ${
+                  className={`w-5 h-5 text-cosmic-purple shrink-0 transition-transform duration-300 ${
                     openIndex === idx ? 'rotate-180' : ''
                   }`}
                 />
@@ -59,6 +61,7 @@ export const FAQSection: React.FC = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
+                    id={`faq-answer-${idx}`}
                   >
                     <div className="px-6 pb-4 text-gray-400 leading-relaxed">
                       {item.answer}

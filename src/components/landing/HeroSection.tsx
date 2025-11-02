@@ -2,22 +2,30 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
 import { Button } from '@/components/ui/Button';
+import { landingData } from '@/data/landing-data';
 
 export const HeroSection: React.FC = () => {
+  const { hero } = landingData;
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Cosmic Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0614] via-[#1a1229] to-[#0a0614]" />
-      
-      {/* Large cosmic orbs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cosmic-purple/30 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3 animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-cosmic-magenta/20 rounded-full blur-[150px] -translate-x-1/3 translate-y-1/3" style={{ animation: 'floatSlow 15s ease-in-out infinite' }} />
-      
-      {/* Aurora-like gradients */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cosmic-purple/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-cosmic-cyan/10 via-transparent to-transparent" />
+      {/* Voice GIF Background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/Voice.gif"
+          alt="Voice Background"
+          fill
+          priority
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+
+      {/* Dark Overlay for Content Readability */}
+      <div className="absolute inset-0 z-[1] bg-black/60" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -34,10 +42,10 @@ export const HeroSection: React.FC = () => {
               transition={{ delay: 0.2 }}
               className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight"
             >
-              <span className="text-foreground">Aim for</span>
+              <span className="text-foreground">{hero.headline.split('. ')[0]}.</span>
               <br />
               <span className="bg-gradient-to-r from-cosmic-purple via-cosmic-magenta to-cosmic-pink bg-clip-text text-transparent">
-                Viral Growth
+                {hero.headline.split('. ').slice(1).join('. ')}
               </span>
             </motion.h1>
 
@@ -47,21 +55,54 @@ export const HeroSection: React.FC = () => {
               transition={{ delay: 0.3 }}
               className="text-xl sm:text-2xl text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0"
             >
-              Transform your content strategy with AI-powered insights that predict trends, optimize engagement, and connect you with the right opportunities.
+              {hero.subheadline}
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
             >
               <Button size="lg" variant="primary" className="min-w-[200px]">
-                Get Started
+                {hero.cta}
               </Button>
               <Button size="lg" variant="outline" className="min-w-[200px]">
                 See How It Works
               </Button>
+            </motion.div>
+
+            {/* Trust Indicators & Social Proof */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start text-sm"
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div
+                      key={i}
+                      className="w-8 h-8 rounded-full bg-gradient-to-br from-cosmic-purple to-cosmic-magenta border-2 border-dark-card"
+                      style={{ zIndex: 5 - i }}
+                    />
+                  ))}
+                </div>
+                <span className="text-gray-400 ml-2">
+                  {hero.badge}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-gray-400">
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <svg key={i} className="w-4 h-4 fill-gold text-gold" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+                <span>4.9/5 App Store</span>
+              </div>
             </motion.div>
 
           </motion.div>
@@ -71,40 +112,34 @@ export const HeroSection: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex justify-center lg:justify-end min-h-[600px]"
+            className="relative flex justify-center lg:justify-end min-h-[750px]"
           >
-            <div className="relative w-full max-w-2xl h-[600px]">
+            <div className="relative w-full max-w-2xl h-[750px]">
               {/* Stacked phone mockups */}
               <div className="relative w-full h-full" style={{ perspective: '2000px' }}>
                 {/* Phone 1 - Center, largest */}
-                <motion.div
-                  animate={{ y: [0, -10, 0], rotateZ: [-5, -3, -5] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30"
-                  style={{ width: '280px' }}
+                <div
+                  className="absolute left-1/2 top-1/2 z-30 opacity-100 bg-black rounded-[3rem]"
+                  style={{ width: '320px', transform: 'translate(-50%, -50%) rotateZ(-5deg)' }}
                 >
                   <PhoneMockup />
-                </motion.div>
+                </div>
 
                 {/* Phone 2 - Left, smaller, rotated */}
-                <motion.div
-                  animate={{ y: [0, -15, 0], rotateZ: [-15, -12, -15] }}
-                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 opacity-80"
-                  style={{ width: '240px', transform: 'translateY(-50%) rotateZ(-15deg) scale(0.85)' }}
+                <div
+                  className="absolute left-0 top-1/2 z-20 opacity-90 bg-black rounded-[3rem]"
+                  style={{ width: '280px', transform: 'translateY(-50%) rotateZ(-15deg) scale(0.9)' }}
                 >
                   <PhoneMockup />
-                </motion.div>
+                </div>
 
                 {/* Phone 3 - Right, smaller, rotated */}
-                <motion.div
-                  animate={{ y: [0, -12, 0], rotateZ: [15, 12, 15] }}
-                  transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 opacity-75"
-                  style={{ width: '260px', transform: 'translateY(-50%) rotateZ(15deg) scale(0.9)' }}
+                <div
+                  className="absolute right-0 top-1/2 z-10 opacity-85 bg-black rounded-[3rem]"
+                  style={{ width: '300px', transform: 'translateY(-50%) rotateZ(15deg) scale(0.95)' }}
                 >
                   <PhoneMockup />
-                </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>

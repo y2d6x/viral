@@ -19,11 +19,11 @@ export const Header: React.FC = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-dark-navy/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'
-      }`}
-    >
+            <header
+              className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+                isScrolled ? 'bg-dark-navy/98 backdrop-blur-xl shadow-xl shadow-cosmic-purple/10 border-b border-dark-border/50' : 'bg-transparent'
+              }`}
+            >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -47,10 +47,11 @@ export const Header: React.FC = () => {
             </a>
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button size="sm" variant="outline">Sign Up</Button>
-          </div>
+                  {/* Desktop CTA */}
+                  <div className="hidden md:flex items-center gap-4">
+                    <Button size="sm" variant="outline" href="#pricing">Download</Button>
+                    <Button size="sm" variant="primary">Contact Us</Button>
+                  </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -93,9 +94,14 @@ export const Header: React.FC = () => {
               >
                 FAQ
               </a>
-              <Button size="md" variant="outline" className="mt-2">
-                Sign Up
-              </Button>
+                      <div className="flex flex-col gap-2 mt-4">
+                        <Button size="md" variant="primary" className="w-full">
+                          Contact Us
+                        </Button>
+                        <Button size="md" variant="outline" className="w-full">
+                          Download
+                        </Button>
+                      </div>
             </nav>
           </div>
         )}
